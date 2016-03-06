@@ -1,9 +1,13 @@
 /*global Stripe*/
 $(document).ready(function() {
   
-  Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'));
+  var key = $('meta[name="stripe-key"]').attr('content');
+  Stripe.setPublishableKey(key);
+  
+  
   // Watch for a form submission:
   $("#form-submit-btn").click(function(event) {
+    
     event.preventDefault();
     $('input[type=submit]').prop('disabled', true);
     var error = false;
@@ -14,7 +18,7 @@ $(document).ready(function() {
 
     if (!error) {
       // Get the Stripe token:
-      Stripe.createToken({
+      Stripe.card.createToken({
         number: ccNum,
         cvc: cvcNum,
         exp_month: expMonth,
@@ -27,16 +31,22 @@ $(document).ready(function() {
   function stripeResponseHandler(status, response) {
     // Get a reference to the form:
     var f = $("#pro_form");
-
-    // Get the token from the response:
-    var token = response.id;
-
-    // Add the token to the form:
-    f.append('<input type="hidden" name="user[stripe_card_token]" value="' + token + '" />');
-
-    // Submit the form:
-    f.get(0).submit(); 
+    
+    if(response.error){
+       // Show the errors on the form
+      alert(response.error.message);
+      
+    } else {
+        // Get the token from the response:
+        var token = response.id;
+        // Add the token to the form:
+        f.append('<input type="hidden" name="user[stripe_card_token]" value="' + token + '" />');
+    
+        // Submit the form to server:
+        f.get(0).submit(); 
+    }
   }
+  
 });
 
 
