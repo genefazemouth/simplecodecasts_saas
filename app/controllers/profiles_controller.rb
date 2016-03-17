@@ -1,6 +1,5 @@
 class ProfilesController < ApplicationController
-   # form were user can fill out their own profile
-   #look into dbase and getthe current logged in user
+  
    def new
        @user = User.find( params[:user_id] )
        @profile = @user.build_profile
@@ -11,10 +10,10 @@ class ProfilesController < ApplicationController
        @profile = @user.build_profile(profile_params)
     
       if @profile.save
-         flash[:success] = "Profile updated"
-         redirect_to user_path( params[:user_id])
+       flash[:success] = "Profile updated"
+       redirect_to user_path( params[:user_id] )
       else
-         render action: new
+        render action: new
       end
    end
    
