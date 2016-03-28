@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resource :profile
   end
   get 'about/' => 'pages#about'
+  get '/users/:user_id/profile', to: 'profiles#show' , as: 'show_user_profile'
   root 'pages#home'
   
   # The priority is based upon order of creation: first created -> highest priority.
