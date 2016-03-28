@@ -25,7 +25,8 @@ gem 'stripe', '1.16.1'
 # use figaro to hide secret keys
 gem 'figaro', '1.0.0'
 
-
+#use paperclip for image upload
+gem 'paperclip', '4.2.1'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
