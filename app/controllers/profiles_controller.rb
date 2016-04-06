@@ -32,18 +32,11 @@ class ProfilesController < ApplicationController
         flash[:success] = "Profile updated"
         redirect_to user_path(params[:user_id])
     else
-        render action: new
+        render action: :edit
     end
     
    end
-   
-   #def show
-    # @user = User.find( params[:user_id] )
-    # @profile = @user.profile
-     #redirect_to user_path(params[:user_id])
-     #render action: show
-  # end
-   
+ 
    private
    
    def only_current_user

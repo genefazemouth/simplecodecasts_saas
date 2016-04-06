@@ -1,9 +1,9 @@
 
 <%= image_tag @user.profile.avatar.url %>
 <%= @user.profile.first_name %> <%= @user.profile.last_name %>
-<%= @user.profile.job_title %>
+<%= @user.profile.job_title %> <br/>
 <% if current_user.plan_id == 2 %>
-    <%= @user.phone_number %>
-    <%= @user.contact_email %>
+    <%= @user.profile.phone_number %><br/>
+    <%= @user.profile.contact_email %><br/>
 <%end %>
-<%= @user.profile.description %>
+<%= @user.profile.description %><br/>
