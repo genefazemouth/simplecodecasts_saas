@@ -1,7 +1,9 @@
 
-<div class="row">
-    <div class = "col-md-6 ">
-        <h3 class="text-left">Name: <%= @user.profile.first_name  %> <%= @user.profile.last_name %></h3> 
-        <h3 class="text-left">email: <%= @user.email %></h3>
-    </div>
-</div>   
+<%= image_tag @user.profile.avatar.url %>
+<%= @user.profile.first_name %> <%= @user.profile.last_name %>
+<%= @user.profile.job_title %>
+<% if current_user.plan_id == 2 %>
+    <%= @user.phone_number %>
+    <%= @user.contact_email %>
+<%end %>
+<%= @user.profile.description %>

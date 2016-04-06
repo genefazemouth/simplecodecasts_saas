@@ -37,12 +37,12 @@ class ProfilesController < ApplicationController
     
    end
    
-   def show
-     @user = User.find( params[:user_id] )
-     @profile = @user.profile
+   #def show
+    # @user = User.find( params[:user_id] )
+    # @profile = @user.profile
      #redirect_to user_path(params[:user_id])
      #render action: show
-   end
+  # end
    
    private
    
@@ -52,7 +52,7 @@ class ProfilesController < ApplicationController
    end
    
    def profile_params
-      params.require(:profile).permit(:first_name, :last_name,:job_title, :phone_number, :contact_email, :description)
+      params.require(:profile).permit(:first_name, :last_name, :avatar, :job_title, :phone_number, :contact_email, :description)
    end
    
 end
